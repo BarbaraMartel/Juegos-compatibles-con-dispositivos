@@ -38,13 +38,13 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(600, 200);
   
-  sun = createSprite(width-50,100,10,10);
-  sun.addAnimation("sun", sunAnimation);
-  sun.scale = 0.1
+  //sun = createSprite(width-50,100,10,10);
+  //sun.addAnimation("sun", sunAnimation);
+  //sun.scale = 0.1
   
-  trex = createSprite(50,height-70,20,50);
+  trex = createSprite(50,180,20,50);
   
   
   trex.addAnimation("running", trex_running);
@@ -53,10 +53,10 @@ function setup() {
   trex.scale = 0.08
   // trex.debug=true
   
-  invisibleGround = createSprite(width/2,height-10,width,125);  
+  invisibleGround = createSprite(200,190,400,10);  
   invisibleGround.shapeColor = "#f4cbaa";
   
-  ground = createSprite(width/2,height,width,2);
+  ground = createSprite(200,180,400,20);
   ground.addImage("ground",groundImage);
   ground.x = width/2
   ground.velocityX = -(6 + 3*score/100);
@@ -94,10 +94,10 @@ function draw() {
     score = score + Math.round(getFrameRate()/60);
     ground.velocityX = -(6 + 3*score/100);
     
-    if((touches.length > 0 || keyDown("SPACE")) && trex.y  >= height-120) {
+    if((keyDown("SPACE")) && trex.y  >= height-120) {
       jumpSound.play( )
       trex.velocityY = -10;
-       touches = [];
+      
     }
     
     trex.velocityY = trex.velocityY + 0.8
@@ -132,9 +132,9 @@ function draw() {
     obstaclesGroup.setLifetimeEach(-1);
     cloudsGroup.setLifetimeEach(-1);
     
-    if(touches.length>0 || keyDown("SPACE")) {      
+    if( keyDown("SPACE")) {      
       reset();
-      touches = []
+      
     }
   }
   
